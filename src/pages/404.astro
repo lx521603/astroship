@@ -37,6 +37,8 @@ import Layout from "@/layouts/Layout.astro";
                   <div class="w-3 h-3 bg-gray-900 rounded-full animate-pulse"></div>
                 </div>
               </div>
+              <!-- 猫鼻子 -->
+              <div class="absolute top-12 left-1/2 transform -translate-x-1/2 w-2 h-1 bg-pink-400 rounded-full"></div>
               <!-- 猫胡子 -->
               <div class="absolute top-14 left-2 right-2 flex justify-between">
                 <div class="w-8 h-0.5 bg-white transform -rotate-15"></div>
@@ -62,8 +64,8 @@ import Layout from "@/layouts/Layout.astro";
               <div class="w-3 h-3 bg-green-500 rounded-full"></div>
             </div>
             <pre class="text-green-400 text-sm overflow-x-auto"><code>// 页面未找到
-<span class="text-blue-400">if</span> (!page.exists()) {
-  <span class="text-yellow-400">return</span> <span class="text-red-400">new</span> Response(<span class="text-gray-400">"404 - 页面不存在"</span>);
+if (!page.exists()) {
+  return new Response("404 - 页面不存在");
 }</code></pre>
           </div>
         </div>
@@ -73,9 +75,9 @@ import Layout from "@/layouts/Layout.astro";
           <a href="/" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition duration-200 font-medium">
             返回首页
           </a>
-          <a href="javascript:history.back()" class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200 font-medium">
+          <button onclick="history.back()" class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg transition duration-200 font-medium">
             返回上页
-          </a>
+          </button>
         </div>
 
         <!-- 辅助文字 -->
@@ -85,12 +87,18 @@ import Layout from "@/layouts/Layout.astro";
       </div>
     </div>
 
-    <style>
+    <style is:global>
       /* 浮动动画 */
       @keyframes float {
-        0%, 100% { transform: translateY(0) rotate(0deg); }
-        33% { transform: translateY(-10px) rotate(3deg); }
-        66% { transform: translateY(-5px) rotate(-3deg); }
+        0%, 100% { 
+          transform: translateY(0) rotate(0deg); 
+        }
+        33% { 
+          transform: translateY(-10px) rotate(3deg); 
+        }
+        66% { 
+          transform: translateY(-5px) rotate(-3deg); 
+        }
       }
       .animate-float {
         animation: float 3s ease-in-out infinite;
